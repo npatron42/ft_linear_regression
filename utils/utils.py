@@ -1,16 +1,16 @@
-##
-# Copyright (c) 2024 - Indigen Solutions
-# Authors:
-#   - Nicolas Patron <nicolas.patron@indigen.com>
-# NOTICE: All information contained herein is, and remains
-# the property of Indigen Solutions and its suppliers, if any.
-# Dissemination of this information or reproduction of this material
-# is strictly forbidden unless prior written permission is obtained
-# from Indigen Solutions.
-#
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    utils.py                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/23 19:06:13 by npatron           #+#    #+#              #
+#    Updated: 2025/03/23 20:03:28 by npatron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 import csv
-import pandas as pd
 
 def fill_x_and_y_from_dataset(path_to_csv) -> None:
 

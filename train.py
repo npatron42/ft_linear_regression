@@ -1,16 +1,21 @@
-##
-# Copyright (c) 2024 - Indigen Solutions
-# Authors:
-#   - Nicolas Patron <nicolas.patron@indigen.com>
-# NOTICE: All information contained herein is, and remains
-# the property of Indigen Solutions and its suppliers, if any.
-# Dissemination of this information or reproduction of this material
-# is strictly forbidden unless prior written permission is obtained
-# from Indigen Solutions.
-#
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    train.py                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/23 19:06:01 by npatron           #+#    #+#              #
+#    Updated: 2025/03/23 20:14:35 by npatron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 from utils import utils
+
 import os
+import sys
+
+# Standard deviation --> 
 
 
 class LinearRegressionModel():
@@ -20,18 +25,25 @@ class LinearRegressionModel():
         alpha = None # Learning rate
         return
     
-    def cost_function():
+    def calculate
+
+    def normalized_values(self):
+        return
+
+    def cost_function(self):
         return
 
 
 
-    def generate():
+    def generate(self):
         return
-
 
 
 def main():
-    model = LinearRegressionModel()
+    
+    if (len(sys.argv) != 2):
+        print("Error.\npython3 train.py <path_to_csv>")
+    model = LinearRegressionModel(csv_path=sys.argv[1])
     model.generate()
     return
 
