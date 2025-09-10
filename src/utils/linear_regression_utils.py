@@ -6,14 +6,14 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 09:58:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/10 14:54:25 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/10 15:24:16 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import csv
 from typing import List
 
-from models.models import GenerateComputedValuesResponse, ParseCSVDatasetResponse
+from models.models import ComputedValues, ParseCSVDatasetResponse
 
 class LinearRegressionUtils():
     def __init__(self, csv_path):
@@ -45,10 +45,9 @@ class LinearRegressionUtils():
             print(f"[ERROR] Error during 'fill_x_and_y_from_dataset': {e}")
             return None
     
-    def generate_computed_values(self) -> GenerateComputedValuesResponse | None:
-        try:
+    def generate_computed_values(self) -> ComputedValues:
             generate_computed_values_response = self.fill_x_and_y_from_dataset()
-                        
+   
             X = generate_computed_values_response.X
             y = generate_computed_values_response.y
             x_sum = self._compute_sum(list=X)
@@ -56,17 +55,17 @@ class LinearRegressionUtils():
             mean = x_sum / m
             standard_deviation = self._compute_standard_deviation(X=X, mean=mean, m=m)
             standardized_values = self._standardize_values(X=X, mean=mean, standard_deviation=standard_deviation)
-            return GenerateComputedValuesResponse(
+            return ComputedValues(
                 X=X,
                 y=y,
-                x_sum=x_sum,
-                m=m,
-                mean=mean,
-                standard_deviation=standard_deviation,
-                standardized_x=standardized_values,
+                stats = {
+                    "x_sum": x_sum,
+                    "m": m,
+                    "mean": mean,
+                    "standard_deviation": standard_deviation,
+                    "standardized_x": standardized_values
+                }
             )
-        except Exception as e:
-            return None
 
     ## Private implementation 
 
