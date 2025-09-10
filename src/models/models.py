@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 13:14:03 by npatron           #+#    #+#              #
-#    Updated: 2025/09/10 14:10:18 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/10 15:01:37 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,3 +28,5 @@ class GenerateComputedValuesResponse(BaseModel):
     mean: float
     standard_deviation: float
     
+class GenerateResponse(BaseModel):
+    success: bool

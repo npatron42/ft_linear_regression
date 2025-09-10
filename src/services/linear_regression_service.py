@@ -6,12 +6,12 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 11:29:50 by npatron           #+#    #+#              #
-#    Updated: 2025/09/10 14:37:10 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/10 15:02:15 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from utils.linear_regression_utils import LinearRegressionUtils
-from models.models import GenerateComputedValuesResponse
+from models.models import GenerateResponse
 from typing import List
 
 class LinearRegressionService():
@@ -33,16 +33,21 @@ class LinearRegressionService():
         
         self.learning_rate = 0
         return
-    
+
     ## Public implementation
 
-    def generate(self):
-        computed_values = self.linear_regression_utils.generate_computed_values()
-        print(computed_values)
+    def generate(self) -> GenerateResponse:
+        try:
+            computed_values = self.linear_regression_utils.generate_computed_values()
+            self.__dict__.update(computed_values.model_dump())
+            self._print_values()
+            return GenerateResponse(success=True)
+        except Exception as e:
+            return GenerateResponse(success=False)
         return
-    
+
     ## Private implementation
-        
+
     def _print_values(self):
         print("[DEBUG] x :", self.X)
         print("[DEBUG] y :", self.y)
@@ -53,11 +58,7 @@ class LinearRegressionService():
         print("[DEBUG] standard_deviation :", self.standard_deviation)
         print("[DEBUG] mean :", self.mean)
 
-    
-    def _standardized_values(self) -> None:
-        
-        return
-    
+
 
 
     def _compute_cost(self) -> None:
