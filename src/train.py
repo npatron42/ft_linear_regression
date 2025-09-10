@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/23 19:06:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/10 11:03:26 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/10 11:26:01 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ class LinearRegressionModel():
         self.x = []
         self.y = []
         self.m = 0
-        alpha = None
+        self.learning_rate = 0
 
         self.linear_regression_utils.fill_x_and_y_from_dataset(x=self.x, y=self.y)
         self.m = len(self.x)
