@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 09:58:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/11 11:16:16 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/11 11:25:53 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,9 @@ class LinearRegressionUtils():
             x_p = (x - mean) / standard_deviation
             standardized_values.append(x_p)
         return standardized_values
+
+    def _cost_function(X: List, y: List, theta: tuple[int, int]):
+        return
 
     #TODO
     
