@@ -6,14 +6,14 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 09:58:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/10 15:24:16 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/11 11:16:16 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import csv
 from typing import List
 
-from models.models import ComputedValues, ParseCSVDatasetResponse
+from models.models import ComputedValues, XAndYSetGenerated
 
 class LinearRegressionUtils():
     def __init__(self, csv_path):
@@ -21,7 +21,7 @@ class LinearRegressionUtils():
         
     ## Public implementation ##
 
-    def fill_x_and_y_from_dataset(self) -> ParseCSVDatasetResponse | None:
+    def fill_x_and_y_from_dataset(self) -> XAndYSetGenerated | None:
         try:
             X, y = [], []
             with open(self.csv_path, newline='') as f:
@@ -40,7 +40,7 @@ class LinearRegressionUtils():
                     X.append(int(row[0]))
                     y.append(int(row[1]))
 
-            return ParseCSVDatasetResponse(X=X, y=y, x_label=x_label, y_label=y_label)
+            return XAndYSetGenerated(X=X, y=y, x_label=x_label, y_label=y_label)
         except (csv.Error, ValueError) as e:
             print(f"[ERROR] Error during 'fill_x_and_y_from_dataset': {e}")
             return None

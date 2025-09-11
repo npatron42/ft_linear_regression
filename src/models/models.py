@@ -6,14 +6,14 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 13:14:03 by npatron           #+#    #+#              #
-#    Updated: 2025/09/10 15:21:03 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/11 11:16:16 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from typing import List
 from pydantic import BaseModel
 
-class ParseCSVDatasetResponse(BaseModel):
+class XAndYSetGenerated(BaseModel):
     X: List
     y: List
     x_label: str
