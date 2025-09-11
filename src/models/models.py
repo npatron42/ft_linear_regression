@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 13:14:03 by npatron           #+#    #+#              #
-#    Updated: 2025/09/11 11:36:49 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/11 15:37:01 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,11 @@ class XAndYSetGenerated(BaseModel):
 class GenerateResponse(BaseModel):
     success: bool
 
-class Stats(BaseModel):
+class ComputedValues(BaseModel):
+    X: List
+    y: List
     m: int = None
     x_sum: int = None
     mean: float = None
     standard_deviation: float = None
     standardized_x: List[float] = []
-
-class ComputedValues(BaseModel):
-    X: List
-    y: List
-    stats: Stats

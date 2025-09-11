@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 09:58:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/11 11:25:53 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/11 16:21:38 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ class LinearRegressionUtils():
                 # Récupère la première ligne comme header
                 header = next(reader, None)
                 if header is None or len(header) < 2:
-                    raise ValueError("CSV file is empty or bad")
+                    raise ValueError("SV file is empty or bad")
                 
                 x_label, y_label = header[0], header[1]
 
@@ -58,13 +58,11 @@ class LinearRegressionUtils():
             return ComputedValues(
                 X=X,
                 y=y,
-                stats = {
-                    "x_sum": x_sum,
-                    "m": m,
-                    "mean": mean,
-                    "standard_deviation": standard_deviation,
-                    "standardized_x": standardized_values
-                }
+                x_sum=x_sum,
+                m=m,
+                mean=mean,
+                standard_deviation=standard_deviation,
+                standardized_x=standardized_values
             )
 
     ## Private implementation 
@@ -76,12 +74,9 @@ class LinearRegressionUtils():
         return x_sum
 
     def _compute_standard_deviation(self, X: List, mean: float, m: int) -> float:
-        try:
-            standard_deviation: float = sum((int(x) - mean) ** 2 for x in X) / m
-            standard_deviation **= 0.5
-            return standard_deviation
-        except Exception as e:
-            print(e)
+        standard_deviation: float = sum((int(x) - mean) ** 2 for x in X) / m
+        standard_deviation **= 0.5
+        return standard_deviation
 
     def _standardize_values(self, X: List, mean: float, standard_deviation: float) -> List[int]:
         standardized_values: List[float] = []
@@ -89,12 +84,3 @@ class LinearRegressionUtils():
             x_p = (x - mean) / standard_deviation
             standardized_values.append(x_p)
         return standardized_values
-
-    def _cost_function(X: List, y: List, theta: tuple[int, int]):
-        return
-
-    #TODO
-    
-    
-
-    
