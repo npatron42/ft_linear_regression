@@ -6,4 +6,5 @@
 ------------------------- Absolute ----------------------------
 
 [AE] Absolute Error : 13388.12122109657
+[MAE] Mean Absolute Percentage Error : 9.64767145300125
 [MAE] Mean Absolute Error : 557.838384212357

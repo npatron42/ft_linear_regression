@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 11:29:50 by npatron           #+#    #+#              #
-#    Updated: 2025/09/12 11:00:50 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/12 13:22:28 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ class LinearRegressionModel():
     cost: float
     learning_rate: float = 0.01
     mean_absolute_error: float
-    loss: float
     m: int
     x_sum: int
     mean: float
@@ -37,8 +36,6 @@ class LinearRegressionModel():
         self.theta0 = 0
         self.theta1 = 0
         self.csv_path = csv_path
-
-    ## Public implementation ##
 
     def generate(self) -> GenerateResponse:
         computed_values = self.linear_regression_utils.generate_computed_values(csv_path=self.csv_path)
@@ -55,16 +52,15 @@ class LinearRegressionModel():
             cost = self._compute_cost()
             
         self._denormalize_thetas(theta0_prime=theta0_prime, theta1_prime=theta1_prime)
-        self._save_thetas()
+        self._save_labels_and_thetas()
         return GenerateResponse(success=True)
-
-    ## Private implementation ##
 
     def _estimate_price(self, mileage: int) -> float:
         return (self.theta0 + (self.theta1 * mileage))
 
-    def _save_thetas(self):
+    def _save_labels_and_thetas(self):
         f = open("src/data/values/values.txt", mode="w")
+        f.write(f"{self.x_label},{self.y_label}\n")
         f.write(f"{self.theta0},{self.theta1}")
         return
 

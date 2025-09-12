@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/23 19:06:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/12 11:54:29 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/12 13:12:46 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ def main():
         
         linear_regression_vizualisation = LinearRegressionVizualisation(X=linear_regression_model.X, 
                                                                         y=linear_regression_model.y,
+                                                                        x_label=linear_regression_model.x_label,
+                                                                        y_label=linear_regression_model.y_label,
                                                                         theta0=linear_regression_model.theta0,
                                                                         theta1=linear_regression_model.theta1,
                                                                         linear_regression_accuracy=linear_regression_accuracy)

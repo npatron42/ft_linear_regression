@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 16:40:23 by npatron           #+#    #+#              #
-#    Updated: 2025/09/12 12:18:59 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/12 14:20:23 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,32 +18,47 @@ from classes.linear_regression_accuracy import LinearRegressionAccuracy
 
 class LinearRegressionVizualisation():
 
-    def __init__(self, X: List, y: List, theta0: float, theta1: float, linear_regression_accuracy: LinearRegressionAccuracy):
+    def __init__(self, X: List, 
+                 y: List, 
+                 theta0: float, 
+                 theta1: float, 
+                 linear_regression_accuracy: LinearRegressionAccuracy,
+                 x_label: str,
+                 y_label: str):
         self.linear_regression_utils = LinearRegressionUtils()
         self.X = X
         self.y = y
+        self.x_label = x_label
+        self.y_label = y_label
         self.theta0 = theta0
         self.theta1 = theta1
         self.linear_regression_accuracy = linear_regression_accuracy
 
     def show(self):
         fig1, ax1 = plt.subplots()
-        ax1.set_title("Car mileage vs Price")
+        ax1.set_title(f"{self.x_label} vs {self.y_label}")
+        ax1.set_xlabel(self.x_label)
+        ax1.set_ylabel(self.y_label)
         ax1.scatter(self.X, self.y)
-        ax1.set_xlabel("Mileage")
-        ax1.set_ylabel("Price")
         y_computed = self.linear_regression_utils.compute_x(X=self.X, theta0=self.theta0, theta1=self.theta1)
         ax1.plot(self.X, y_computed, color="pink")
 
         fig2, ax2 = plt.subplots()
         ax2.axis('off')
-        column_labels = ["Squarred Error", "Mean Squarred Error", "Root mean squared error", "Absolute error", "Mean Absolute Error"]
+        column_labels = ["Squarred Error", 
+                         "Mean Squarred Error", 
+                         "Root mean squared error", 
+                         "Absolute error", 
+                         "Mean Absolute Percentage Error",
+                         "Mean Absolute Error"
+        ]
         table_data = [
             [
                 self.linear_regression_accuracy.squared_error, 
                 self.linear_regression_accuracy.mean_absolute_error,
                 self.linear_regression_accuracy.root_mean_squared_error, 
-                self.linear_regression_accuracy.absolute_error, 
+                self.linear_regression_accuracy.absolute_error,
+                self.linear_regression_accuracy.mean_absolute_percentage_error,
                 self.linear_regression_accuracy.mean_absolute_error
             ]
         ]
