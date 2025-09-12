@@ -6,15 +6,14 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 11:29:50 by npatron           #+#    #+#              #
-#    Updated: 2025/09/11 17:52:15 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/12 11:00:50 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from typing import List
 
-from models.models import GenerateResponse
-from classes.linear_regression_vizualisation import LinearRegressionVizualisation
 from classes.utils.linear_regression_utils import LinearRegressionUtils
+from models.models import GenerateResponse
 
 class LinearRegressionModel():
     X: List[int] = []
@@ -34,15 +33,15 @@ class LinearRegressionModel():
     standardized_x: List[float]
     
     def __init__(self, csv_path: str):
-        self.linear_regression_utils = LinearRegressionUtils(csv_path=csv_path)
-        self.linear_regression_vizualisation = LinearRegressionVizualisation()
+        self.linear_regression_utils = LinearRegressionUtils()
         self.theta0 = 0
         self.theta1 = 0
+        self.csv_path = csv_path
 
     ## Public implementation ##
 
     def generate(self) -> GenerateResponse:
-        computed_values = self.linear_regression_utils.generate_computed_values()
+        computed_values = self.linear_regression_utils.generate_computed_values(csv_path=self.csv_path)
         self.__dict__.update(computed_values.model_dump())
         cost = self._compute_cost()
         while (abs(cost) >= 0.0000000001):
@@ -57,7 +56,6 @@ class LinearRegressionModel():
             
         self._denormalize_thetas(theta0_prime=theta0_prime, theta1_prime=theta1_prime)
         self._save_thetas()
-        self.linear_regression_vizualisation.show(X=self.X, y=self.y, theta0=self.theta0, theta1=self.theta1)
         return GenerateResponse(success=True)
 
     ## Private implementation ##

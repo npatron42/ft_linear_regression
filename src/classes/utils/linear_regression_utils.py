@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/10 09:58:01 by npatron           #+#    #+#              #
-#    Updated: 2025/09/11 16:21:38 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/12 10:18:52 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,13 @@ from typing import List
 from models.models import ComputedValues, XAndYSetGenerated
 
 class LinearRegressionUtils():
-    def __init__(self, csv_path):
-        self.csv_path = csv_path
-        
-    ## Public implementation ##
 
-    def fill_x_and_y_from_dataset(self) -> XAndYSetGenerated | None:
+    def fill_x_and_y_from_dataset(self, csv_path: str) -> XAndYSetGenerated | None:
         try:
             X, y = [], []
-            with open(self.csv_path, newline='') as f:
+            with open(csv_path, newline='') as f:
                 reader = csv.reader(f)
                 
-                # Récupère la première ligne comme header
                 header = next(reader, None)
                 if header is None or len(header) < 2:
                     raise ValueError("SV file is empty or bad")
@@ -45,8 +40,8 @@ class LinearRegressionUtils():
             print(f"[ERROR] Error during 'fill_x_and_y_from_dataset': {e}")
             return None
     
-    def generate_computed_values(self) -> ComputedValues:
-            generate_computed_values_response = self.fill_x_and_y_from_dataset()
+    def generate_computed_values(self, csv_path: str) -> ComputedValues:
+            generate_computed_values_response = self.fill_x_and_y_from_dataset(csv_path=csv_path)
    
             X = generate_computed_values_response.X
             y = generate_computed_values_response.y
@@ -64,6 +59,13 @@ class LinearRegressionUtils():
                 standard_deviation=standard_deviation,
                 standardized_x=standardized_values
             )
+
+    def compute_x(self, X, theta0: float, theta1: float) -> List[float]:
+        x_computed = []
+        for x in X:
+            value = (theta1 * x) + theta0
+            x_computed.append(value)
+        return x_computed
 
     ## Private implementation 
 
