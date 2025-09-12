@@ -1,0 +1,9 @@
+------------------------- Squared ----------------------------
+
+[SE] squared Error : 10695485.881710561
+[MSE] Mean Squared Error : 445645.24507127336
+[RMSE] Root Mean Squared Error : 667.5666596462659
+------------------------- Absolute ----------------------------
+
+[AE] Absolute Error : 13388.12122109657
+[MAE] Mean Absolute Error : 557.838384212357

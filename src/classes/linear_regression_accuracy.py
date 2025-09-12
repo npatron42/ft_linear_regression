@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/12 09:35:38 by npatron           #+#    #+#              #
-#    Updated: 2025/09/12 12:18:30 by npatron          ###   ########.fr        #
+#    Updated: 2025/09/12 12:48:28 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ class LinearRegressionAccuracy():
         f = open("src/data/values/accuracy.txt", mode="w")
         f.write("------------------------- Squared ----------------------------\n\n")
         f.write(f"[SE] squared Error : {self.squared_error}\n")
-        f.write(f"[MSE] Mean squared Error : {self.mean_squared_error}\n\n")
+        f.write(f"[MSE] Mean Squared Error : {self.mean_squared_error}\n")
+        f.write(f"[RMSE] Root Mean Squared Error : {self.root_mean_squared_error}\n")
         f.write("------------------------- Absolute ----------------------------\n\n")
         f.write(f"[AE] Absolute Error : {self.absolute_error}\n")
         f.write(f"[MAE] Mean Absolute Error : {self.mean_absolute_error}\n")
